@@ -1,0 +1,8 @@
++add coverpoints
+
++add more pipelined scenarios via RAL (by disabling responses)
+
++increase code coverage
+
++try to use Yosis EDA to practice FV as well
+

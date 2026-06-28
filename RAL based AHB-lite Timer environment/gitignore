@@ -1,0 +1,16 @@
+# Simulator-generated artifacts - never commit these, they're regenerated
+# on every run and are tool/machine specific.
+work/
+*.wlf
+*.vstf
+*.ucdb
+*.vcd
+transcript
+*_dump.xml
+report.txt
+coverage_report.txt
+
+# Editor/OS noise
+.vscode/
+*.swp
+.DS_Store

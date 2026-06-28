@@ -1,0 +1,13 @@
+package sqr_pkg;
+  import item_pkg::*;
+  import uvm_pkg::*;
+
+  `include "uvm_macros.svh"
+  class sequencer extends uvm_sequencer #(item, item);// (in,out)
+    `uvm_component_utils(sequencer)
+
+    function new(string name = "sequencer", uvm_component parent = null);
+      super.new(name, parent);
+    endfunction
+  endclass
+endpackage
