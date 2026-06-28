@@ -57,13 +57,3 @@ module Async_FIFO #(parameter DATA_WIDTH = 8,
     );
 
 endmodule
-
-// ---------------------------EXPLANATION---------------------------------
-// This module is a FIFO implementation with configurable data and address
-// sizes. It consists of a memory module, read and write pointer handling
-// modules, and read and write pointer synchronization modules. The read and
-// write pointers are synchronized to the respective clock domains, and the
-// read and write pointers are checked for empty and full conditions,
-// respectively. The FIFO memory module stores the data and handles the
-// read and write operations.
-// -----------------------------------------------------------------------

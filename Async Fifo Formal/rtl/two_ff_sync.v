@@ -1,5 +1,3 @@
-
-
 module two_ff_sync #(parameter WIDTH = 4)( 
     output reg [WIDTH-1:0] q2,   // Output of the second flip-flop
     input [WIDTH-1:0] din,       // Input data

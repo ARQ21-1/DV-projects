@@ -1,4 +1,3 @@
-
 module wptr_full #(parameter ADDR_WIDTH = 4)(
     output reg wfull,                   // Full flag
     output [ADDR_WIDTH-1:0] waddr,       // Write address

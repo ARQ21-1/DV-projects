@@ -1,6 +1,3 @@
-//----------------DISCRIPTION-----------------
-
-
 module FIFO_memory #(parameter DATA_WIDTH = 8,
     parameter ADDR_WIDTH = 4)(
     output [DATA_WIDTH-1:0] rdata,        // Output data - data to be read
