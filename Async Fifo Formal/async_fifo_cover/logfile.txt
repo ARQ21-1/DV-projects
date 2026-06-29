@@ -1,0 +1,26 @@
+SBY 14:40:52 [async_fifo_bmc] Removing directory '/home/ahmed/oss-cad-suite/examples/af/async_fifo_bmc'.
+SBY 14:40:53 [async_fifo_cover] Removing directory '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover'.
+SBY 14:40:53 [async_fifo_cover] Copy '/home/ahmed/oss-cad-suite/examples/af/FIFO.v' to '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover/src/FIFO.v'.
+SBY 14:40:53 [async_fifo_cover] Copy '/home/ahmed/oss-cad-suite/examples/af/FIFO_memory.v' to '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover/src/FIFO_memory.v'.
+SBY 14:40:53 [async_fifo_cover] Copy '/home/ahmed/oss-cad-suite/examples/af/wptr_full.v' to '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover/src/wptr_full.v'.
+SBY 14:40:53 [async_fifo_cover] Copy '/home/ahmed/oss-cad-suite/examples/af/rptr_empty.v' to '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover/src/rptr_empty.v'.
+SBY 14:40:53 [async_fifo_cover] Copy '/home/ahmed/oss-cad-suite/examples/af/two_ff_sync.v' to '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover/src/two_ff_sync.v'.
+SBY 14:40:53 [async_fifo_cover] Copy '/home/ahmed/oss-cad-suite/examples/af/async_fifo_props.sv' to '/home/ahmed/oss-cad-suite/examples/af/async_fifo_cover/src/async_fifo_props.sv'.
+SBY 14:40:53 [async_fifo_cover] engine_0: smtbmc boolector
+SBY 14:40:53 [async_fifo_cover] base: starting process "cd async_fifo_cover/src; yosys -ql ../model/design.log ../model/design.ys"
+SBY 14:40:53 [async_fifo_cover] base: async_fifo_props.sv:76: Warning: Identifier `\fifomem.mem' is implicitly declared.
+SBY 14:40:53 [async_fifo_cover] base: finished (returncode=0)
+SBY 14:40:53 [async_fifo_cover] prep: starting process "cd async_fifo_cover/model; yosys -ql design_prep.log design_prep.ys"
+SBY 14:40:53 [async_fifo_cover] prep: finished (returncode=0)
+SBY 14:40:53 [async_fifo_cover] smt2: starting process "cd async_fifo_cover/model; yosys -ql design_smt2.log design_smt2.ys"
+SBY 14:40:53 [async_fifo_cover] smt2: finished (returncode=0)
+SBY 14:40:53 [async_fifo_cover] engine_0: starting process "cd async_fifo_cover; yosys-smtbmc -s boolector --presat --unroll -c --noprogress -t 30  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY 14:40:53 [async_fifo_cover] engine_0: ##   0:00:00  Solver: boolector
+SBY 14:40:53 [async_fifo_cover] engine_0: ##   0:00:00  Status: passed
+SBY 14:40:53 [async_fifo_cover] engine_0: finished (returncode=0)
+SBY 14:40:53 [async_fifo_cover] engine_0: Status returned by engine: pass
+SBY 14:40:53 [async_fifo_cover] summary: Elapsed clock time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 14:40:53 [async_fifo_cover] summary: Elapsed process time [H:MM:SS (secs)]: 0:00:00 (0)
+SBY 14:40:53 [async_fifo_cover] summary: engine_0 (smtbmc boolector) returned pass
+SBY 14:40:53 [async_fifo_cover] summary: engine_0 did not produce any traces
+SBY 14:40:53 [async_fifo_cover] DONE (PASS, rc=0)

@@ -1,0 +1,582 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2026  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.66+152 (git sha1 a07c484ce, Release, Clang /usr/bin/clang++ 18.1.8)
+
+-- Executing script file `../model/design.ys' --
+
+1. Executing Verilog-2005 frontend: FIFO.v
+Parsing SystemVerilog input from `FIFO.v' to AST representation.
+Generating RTLIL representation for module `\Async_FIFO'.
+Successfully finished Verilog frontend.
+
+2. Executing Verilog-2005 frontend: FIFO_memory.v
+Parsing SystemVerilog input from `FIFO_memory.v' to AST representation.
+Generating RTLIL representation for module `\FIFO_memory'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: wptr_full.v
+Parsing SystemVerilog input from `wptr_full.v' to AST representation.
+Generating RTLIL representation for module `\wptr_full'.
+Successfully finished Verilog frontend.
+
+4. Executing Verilog-2005 frontend: rptr_empty.v
+Parsing SystemVerilog input from `rptr_empty.v' to AST representation.
+Generating RTLIL representation for module `\rptr_empty'.
+Successfully finished Verilog frontend.
+
+5. Executing Verilog-2005 frontend: two_ff_sync.v
+Parsing SystemVerilog input from `two_ff_sync.v' to AST representation.
+Generating RTLIL representation for module `\two_ff_sync'.
+Successfully finished Verilog frontend.
+
+6. Executing Verilog-2005 frontend: async_fifo_props.sv
+Parsing SystemVerilog input from `async_fifo_props.sv' to AST representation.
+Generating RTLIL representation for module `\async_fifo_props'.
+async_fifo_props.sv:76: Warning: Identifier `\fifomem.mem' is implicitly declared.
+Successfully finished Verilog frontend.
+
+7. Executing PREP pass.
+
+7.1. Executing HIERARCHY pass (managing design hierarchy).
+
+7.1.1. Analyzing design hierarchy..
+Top module:  \Async_FIFO
+Used module:     \wptr_full
+Used module:     \rptr_empty
+Used module:     \FIFO_memory
+Used module:     \two_ff_sync
+Parameter 1 (\ADDR_WIDTH) = 4
+
+7.1.2. Executing AST frontend in derive mode using pre-parsed AST for module `\wptr_full'.
+Parameter 1 (\ADDR_WIDTH) = 4
+Generating RTLIL representation for module `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Parameter 1 (\ADDR_WIDTH) = 4
+
+7.1.3. Executing AST frontend in derive mode using pre-parsed AST for module `\rptr_empty'.
+Parameter 1 (\ADDR_WIDTH) = 4
+Generating RTLIL representation for module `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Parameter 1 (\DATA_WIDTH) = 8
+Parameter 2 (\ADDR_WIDTH) = 4
+
+7.1.4. Executing AST frontend in derive mode using pre-parsed AST for module `\FIFO_memory'.
+Parameter 1 (\DATA_WIDTH) = 8
+Parameter 2 (\ADDR_WIDTH) = 4
+Generating RTLIL representation for module `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Parameter 1 (\WIDTH) = 5
+
+7.1.5. Executing AST frontend in derive mode using pre-parsed AST for module `\two_ff_sync'.
+Parameter 1 (\WIDTH) = 5
+Generating RTLIL representation for module `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Parameter 1 (\WIDTH) = 5
+Found cached RTLIL representation for module `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+
+7.1.6. Analyzing design hierarchy..
+Top module:  \Async_FIFO
+Used module:     $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+Used module:     $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+Used module:     $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+Used module:     $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+
+7.1.7. Analyzing design hierarchy..
+Top module:  \Async_FIFO
+Used module:     $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+Used module:     $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+Used module:     $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+Used module:     $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+Removing unused module `\async_fifo_props'.
+Removing unused module `\two_ff_sync'.
+Removing unused module `\rptr_empty'.
+Removing unused module `\wptr_full'.
+Removing unused module `\FIFO_memory'.
+Removed 5 unused modules.
+
+7.2. Executing PROC pass (convert processes to netlists).
+
+7.2.1. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+7.2.2. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 1 switch rules as full_case in process $proc$FIFO_memory.v:14$179 in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Marked 1 switch rules as full_case in process $proc$rptr_empty.v:29$175 in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Marked 1 switch rules as full_case in process $proc$rptr_empty.v:15$166 in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Marked 1 switch rules as full_case in process $proc$wptr_full.v:34$164 in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Marked 1 switch rules as full_case in process $proc$wptr_full.v:14$154 in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Marked 1 switch rules as full_case in process $proc$two_ff_sync.v:9$188 in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+Removed a total of 0 dead cases.
+
+7.2.3. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 8 redundant assignments.
+Promoted 3 assignments to connections.
+
+7.2.4. Executing PROC_INIT pass (extract init attributes).
+
+7.2.5. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rrst_n in `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:29$175'.
+Found async reset \rrst_n in `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:15$166'.
+Found async reset \wrst_n in `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:34$164'.
+Found async reset \wrst_n in `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:14$154'.
+Found async reset \rst_n in `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.$proc$two_ff_sync.v:9$188'.
+
+7.2.6. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~1 debug messages>
+
+7.2.7. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$proc$FIFO_memory.v:14$179'.
+     1/3: $1$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$187
+     2/3: $1$memwr$\mem$FIFO_memory.v:15$177_DATA[7:0]$186
+     3/3: $1$memwr$\mem$FIFO_memory.v:15$177_ADDR[3:0]$185
+Creating decoders for process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:29$175'.
+     1/1: $0\rempty[0:0]
+Creating decoders for process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:15$166'.
+     1/1: { $0\rbin[4:0] $0\rptr[4:0] }
+Creating decoders for process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:34$164'.
+     1/1: $0\wfull[0:0]
+Creating decoders for process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:14$154'.
+     1/1: { $0\wbin[4:0] $0\wptr[4:0] }
+Creating decoders for process `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.$proc$two_ff_sync.v:9$188'.
+     1/1: { $0\q2[4:0] $0\q1[4:0] }
+
+7.2.8. Executing PROC_DLATCH pass (convert process syncs to latches).
+
+7.2.9. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$memwr$\mem$FIFO_memory.v:15$177_ADDR' using process `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$proc$FIFO_memory.v:14$179'.
+  created $dff cell `$procdff$199' with positive edge clock.
+Creating register for signal `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$memwr$\mem$FIFO_memory.v:15$177_DATA' using process `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$proc$FIFO_memory.v:14$179'.
+  created $dff cell `$procdff$200' with positive edge clock.
+Creating register for signal `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$memwr$\mem$FIFO_memory.v:15$177_EN' using process `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$proc$FIFO_memory.v:14$179'.
+  created $dff cell `$procdff$201' with positive edge clock.
+Creating register for signal `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.\rempty' using process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:29$175'.
+  created $adff cell `$procdff$206' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.\rptr' using process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:15$166'.
+  created $adff cell `$procdff$211' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.\rbin' using process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:15$166'.
+  created $adff cell `$procdff$216' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.\wfull' using process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:34$164'.
+  created $adff cell `$procdff$221' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.\wptr' using process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:14$154'.
+  created $adff cell `$procdff$226' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.\wbin' using process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:14$154'.
+  created $adff cell `$procdff$231' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.\q2' using process `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.$proc$two_ff_sync.v:9$188'.
+  created $adff cell `$procdff$236' with positive edge clock and positive level reset.
+Creating register for signal `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.\q1' using process `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.$proc$two_ff_sync.v:9$188'.
+  created $adff cell `$procdff$241' with positive edge clock and positive level reset.
+
+7.2.10. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+7.2.11. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Found and cleaned up 1 empty switch in `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$proc$FIFO_memory.v:14$179'.
+Removing empty process `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.$proc$FIFO_memory.v:14$179'.
+Removing empty process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:29$175'.
+Removing empty process `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$rptr_empty.v:15$166'.
+Removing empty process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:34$164'.
+Removing empty process `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$proc$wptr_full.v:14$154'.
+Removing empty process `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.$proc$two_ff_sync.v:9$188'.
+Cleaned up 1 empty switch.
+
+7.2.12. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Optimizing module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~7 debug messages>
+Optimizing module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+<suppressed ~7 debug messages>
+Optimizing module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+<suppressed ~4 debug messages>
+Optimizing module Async_FIFO.
+
+7.3. Executing FUTURE pass.
+
+7.4. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Optimizing module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+Optimizing module Async_FIFO.
+
+7.5. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+Finding unused cells or wires in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+Finding unused cells or wires in module \Async_FIFO..
+Removed 16 unused cells and 52 unused wires.
+<suppressed ~22 debug messages>
+
+7.6. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory...
+Checking module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100...
+Checking module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100...
+Checking module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101...
+Checking module Async_FIFO...
+Found and reported 0 problems.
+
+7.7. Executing OPT pass (performing simple optimizations).
+
+7.7.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Optimizing module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+Optimizing module Async_FIFO.
+
+7.7.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Computing hashes of 7 cells of `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding duplicate cells in `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding identical cells in module `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 8 cells of `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 9 cells of `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Computing hashes of 2 cells of `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding duplicate cells in `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding identical cells in module `\Async_FIFO'.
+Computing hashes of 5 cells of `\Async_FIFO'.
+Finding duplicate cells in `\Async_FIFO'.
+Removed a total of 0 cells.
+
+7.7.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \Async_FIFO..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+7.7.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+    Consolidated identical input bits for $mux cell $procmux$191:
+      Old ports: A=8'00000000, B=8'11111111, Y=$0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182
+      New ports: A=1'0, B=1'1, Y=$0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0]
+      New connections: $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [7:1] = { $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] $0$memwr$\mem$FIFO_memory.v:15$177_EN[7:0]$182 [0] }
+  Optimizing cells in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+  Optimizing cells in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+  Optimizing cells in module \Async_FIFO.
+Performed a total of 1 changes.
+
+7.7.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Computing hashes of 7 cells of `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding duplicate cells in `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding identical cells in module `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 8 cells of `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 9 cells of `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Computing hashes of 2 cells of `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding duplicate cells in `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding identical cells in module `\Async_FIFO'.
+Computing hashes of 5 cells of `\Async_FIFO'.
+Finding duplicate cells in `\Async_FIFO'.
+Removed a total of 0 cells.
+
+7.7.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+Finding unused cells or wires in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+Finding unused cells or wires in module \Async_FIFO..
+
+7.7.7. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Optimizing module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+Optimizing module Async_FIFO.
+
+7.7.8. Rerunning OPT passes. (Maybe there is more to do..)
+
+7.7.9. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Running muxtree optimizer on module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Running muxtree optimizer on module \Async_FIFO..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+<suppressed ~6 debug messages>
+
+7.7.10. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+  Optimizing cells in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+  Optimizing cells in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+  Optimizing cells in module \Async_FIFO.
+Performed a total of 0 changes.
+
+7.7.11. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Computing hashes of 7 cells of `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding duplicate cells in `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding identical cells in module `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 8 cells of `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 9 cells of `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Computing hashes of 2 cells of `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding duplicate cells in `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding identical cells in module `\Async_FIFO'.
+Computing hashes of 5 cells of `\Async_FIFO'.
+Finding duplicate cells in `\Async_FIFO'.
+Removed a total of 0 cells.
+
+7.7.12. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+Finding unused cells or wires in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+Finding unused cells or wires in module \Async_FIFO..
+
+7.7.13. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Optimizing module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+Optimizing module Async_FIFO.
+
+7.7.14. Finished fast OPT passes. (There is nothing left to do.)
+
+7.8. Executing WREDUCE pass (reducing word size of cells).
+Removed top 4 bits (of 5) from port A of cell $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$not$rptr_empty.v:23$169 ($not).
+Removed top 1 bits (of 5) from port A of cell $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.$xor$rptr_empty.v:24$173 ($xor).
+Removed top 4 bits (of 5) from port A of cell $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$not$wptr_full.v:22$157 ($not).
+Removed top 1 bits (of 5) from port A of cell $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.$xor$wptr_full.v:23$161 ($xor).
+
+7.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+Finding unused cells or wires in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+Finding unused cells or wires in module \Async_FIFO..
+
+7.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+7.11. Executing OPT pass (performing simple optimizations).
+
+7.11.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory.
+Optimizing module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100.
+Optimizing module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101.
+Optimizing module Async_FIFO.
+
+7.11.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Computing hashes of 6 cells of `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding duplicate cells in `$paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory'.
+Finding identical cells in module `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 8 cells of `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Computing hashes of 9 cells of `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding duplicate cells in `$paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100'.
+Finding identical cells in module `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Computing hashes of 2 cells of `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding duplicate cells in `$paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101'.
+Finding identical cells in module `\Async_FIFO'.
+Computing hashes of 5 cells of `\Async_FIFO'.
+Finding duplicate cells in `\Async_FIFO'.
+Removed a total of 0 cells.
+
+7.11.3. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory..
+Finding unused cells or wires in module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100..
+Finding unused cells or wires in module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101..
+Finding unused cells or wires in module \Async_FIFO..
+
+7.11.4. Finished fast OPT passes.
+
+7.12. Executing SORT pass.
+
+7.13. Printing statistics.
+
+=== $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       12 wires
+       49 wire bits
+        7 public wires
+       27 public wire bits
+        7 ports
+       27 port bits
+        6 cells
+        1   $logic_and
+        1   $logic_not
+        1   $mem_v2
+        3   $mux
+
+=== $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       13 wires
+       44 wire bits
+       11 public wires
+       34 public wire bits
+        7 ports
+       18 port bits
+        8 cells
+        1   $add
+        3   $adff
+        1   $and
+        1   $eq
+        1   $not
+        1   $xor
+
+=== $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+        5 wires
+       17 wire bits
+        5 public wires
+       17 public wire bits
+        4 ports
+       12 port bits
+        2 cells
+        2   $adff
+
+=== $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100 ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       14 wires
+       46 wire bits
+       11 public wires
+       34 public wire bits
+        7 ports
+       18 port bits
+        9 cells
+        1   $add
+        3   $adff
+        1   $and
+        1   $eq
+        2   $not
+        1   $xor
+
+=== Async_FIFO ===
+
+        +----------Local Count, excluding submodules.
+        | 
+       16 wires
+       52 wire bits
+       16 public wires
+       52 public wire bits
+       10 ports
+       24 port bits
+        5 submodules
+        1   $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+        1   $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+        2   $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+        1   $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+
+=== design hierarchy ===
+
+        +----------Count including submodules.
+        | 
+       27 Async_FIFO
+        6 $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+        8 $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+        2 $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+        9 $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+
+        +----------Count including submodules.
+        | 
+       65 wires
+      225 wire bits
+       55 public wires
+      181 public wire bits
+       39 ports
+      111 port bits
+        - memories
+        - memory bits
+        - processes
+       27 cells
+        2   $add
+       10   $adff
+        2   $and
+        2   $eq
+        1   $logic_and
+        1   $logic_not
+        1   $mem_v2
+        3   $mux
+        3   $not
+        2   $xor
+        5 submodules
+        1   $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+        1   $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+        2   $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+        1   $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+
+7.14. Executing CHECK pass (checking for obvious problems).
+Checking module $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory...
+Checking module $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100...
+Checking module $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101...
+Checking module $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100...
+Checking module Async_FIFO...
+Found and reported 0 problems.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+Attribute `top' found on module `Async_FIFO'. Setting top module to Async_FIFO.
+
+8.1. Analyzing design hierarchy..
+Top module:  \Async_FIFO
+Used module:     $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+Used module:     $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+Used module:     $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+Used module:     $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+
+8.2. Analyzing design hierarchy..
+Top module:  \Async_FIFO
+Used module:     $paramod$823999466288c90fc66a121a247ad477cc27bb8d\FIFO_memory
+Used module:     $paramod\rptr_empty\ADDR_WIDTH=s32'00000000000000000000000000000100
+Used module:     $paramod\two_ff_sync\WIDTH=s32'00000000000000000000000000000101
+Used module:     $paramod\wptr_full\ADDR_WIDTH=s32'00000000000000000000000000000100
+Removed 0 unused modules.
+
+9. Executing jny backend.
+
+10. Executing RTLIL backend.
+Output filename: ../model/design.il
+
+Warnings: 1 unique messages, 1 total
+End of script. Logfile hash: bcbbb44794, time: 0.05s, user: 0.05s, system: 0.05s, MEM: 16.84 MB peak
+Yosys 0.66+152 (git sha1 a07c484ce, Release, Clang /usr/bin/clang++ 18.1.8)
+Time spent: 40% 7x read_verilog (0 sec), 13% 5x opt_clean (0 sec), ...

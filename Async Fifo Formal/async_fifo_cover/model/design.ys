@@ -1,0 +1,8 @@
+# running in async_fifo_cover/src/
+read_verilog -sv FIFO.v FIFO_memory.v wptr_full.v rptr_empty.v two_ff_sync.v async_fifo_props.sv
+prep -top Async_FIFO
+
+hierarchy -smtcheck
+rename -witness
+write_jny -no-connections ../model/design.json
+write_rtlil ../model/design.il

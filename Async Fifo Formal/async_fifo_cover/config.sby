@@ -1,10 +1,5 @@
-[tasks]
-bmc
-cover
-
 [options]
-bmc: mode bmc
-cover: mode cover
+mode cover
 depth 30
 multiclock on
 
